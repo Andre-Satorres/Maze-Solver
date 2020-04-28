@@ -5,23 +5,19 @@ data class Coordinate (var x: Int, var y: Int)
         this.y = newCoordinate.y
     }
 
-    fun goToTheLeft()
-    {
+    fun goToTheLeft() {
         x--
     }
 
-    fun goToTheRight()
-    {
+    fun goToTheRight() {
         x++
     }
 
-    fun goUp()
-    {
+    fun goUp() {
         y--
     }
 
-    fun goDown()
-    {
+    fun goDown() {
         y++
     }
 
