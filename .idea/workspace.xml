@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9739b133-7ea5-4acb-86c5-14f6b9314f5f" name="Default Changelist" comment="" />
+    <list default="true" id="9739b133-7ea5-4acb-86c5-14f6b9314f5f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Solver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solver.kt" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,30 +17,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MazeSolver.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state relative-caret-position="68">
+              <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Solver.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="145" column="28" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+            <state relative-caret-position="351">
+              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="n#!!block;n#readMatrixFromFile#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#getEnteringCoordinate#0;n#!!block;n#Solver#0" />
-                <element signature="n#!!block;n#getExitingCoordinate#0;n#!!block;n#Solver#0" />
+                <element signature="n#!!block;n#getExitCoordinate#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#notMatchesAnySpecialChar#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#getElement#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#setElement#0;n#!!block;n#Solver#0" />
-                <element signature="n#!!block;n#addToVisited#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#removeFromVisited#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#goBack#0;n#!!block;n#Solver#0" />
+                <element signature="n#!!block;n#initAndSolve#0;n#!!block;n#Solver#0" />
+                <element signature="n#!!block;n#solve#0;n#!!block;n#Solver#0" />
                 <element signature="n#!!block;n#printMaze#0;n#!!block;n#Solver#0" />
               </folding>
             </state>
@@ -57,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/files/maze.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -78,7 +82,11 @@
       <find>matrix[0]</find>
       <find>matrix[</find>
       <find>thr</find>
+      <find>*</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -103,6 +111,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,7 +135,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -136,6 +144,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -148,7 +157,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -195,26 +204,27 @@
       <workItem from="1587991312199" duration="6724000" />
       <workItem from="1588040751958" duration="1402000" />
       <workItem from="1588042248009" duration="8207000" />
+      <workItem from="1588089870068" duration="969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9609000" />
+    <option name="totallyTimeSpent" value="10578000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -223,7 +233,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50159913" side_tool="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -261,13 +272,6 @@
     <state width="1874" height="257" key="GridCell.Tab.0.right/0.27.1920.988@0.27.1920.988" timestamp="1588024413386" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/files/maze.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Coordinate.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -275,29 +279,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MazeSolver.kt">
+    <entry file="file://$PROJECT_DIR$/src/files/maze.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Solver.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="145" column="28" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+        <state relative-caret-position="351">
+          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="n#!!block;n#readMatrixFromFile#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#getEnteringCoordinate#0;n#!!block;n#Solver#0" />
-            <element signature="n#!!block;n#getExitingCoordinate#0;n#!!block;n#Solver#0" />
+            <element signature="n#!!block;n#getExitCoordinate#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#notMatchesAnySpecialChar#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#getElement#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#setElement#0;n#!!block;n#Solver#0" />
-            <element signature="n#!!block;n#addToVisited#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#removeFromVisited#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#goBack#0;n#!!block;n#Solver#0" />
+            <element signature="n#!!block;n#initAndSolve#0;n#!!block;n#Solver#0" />
+            <element signature="n#!!block;n#solve#0;n#!!block;n#Solver#0" />
             <element signature="n#!!block;n#printMaze#0;n#!!block;n#Solver#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MazeSolver.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -7,9 +7,9 @@ data class Solver(var filename: String) {
         const val ENTERING_CHAR = 'I'
         const val EXITING_CHAR  = 'O'
         const val WALL_CHAR = '#'
-        const val PATH = '*'
+        const val PATH_CHAR = '*'
         const val WRONG_PATH = '!'
-        val SPECIAL_CHARS = arrayOf(WALL_CHAR, PATH, WRONG_PATH)
+        val SPECIAL_CHARS = arrayOf(WALL_CHAR, WRONG_PATH)
     }
 
     private var entering_coord = Coordinate(0, 0)
@@ -71,10 +71,12 @@ data class Solver(var filename: String) {
         return true
     }
 
-    private fun Coordinate.canGoLeft()  = this.x > 0 && this.left().notMatchesAnySpecialChar()
-    private fun Coordinate.canGoRight() = this.x < matrix.width() && this.right().notMatchesAnySpecialChar()  // "width"
-    private fun Coordinate.canGoUp()    = this.y > 0 && this.up().notMatchesAnySpecialChar()
-    private fun Coordinate.canGoDown()  = this.y < matrix.height() && this.down().notMatchesAnySpecialChar() // "height"
+    private fun Coordinate.isNotVisited() = !visitedCoordinates.contains(this)
+
+    private fun Coordinate.canGoLeft()  = this.x > 0 && this.left().notMatchesAnySpecialChar() && this.left().isNotVisited()
+    private fun Coordinate.canGoRight() = this.x < matrix.width() && this.right().notMatchesAnySpecialChar()  && this.right().isNotVisited()// "width"
+    private fun Coordinate.canGoUp()    = this.y > 0 && this.up().notMatchesAnySpecialChar() && this.up().isNotVisited()
+    private fun Coordinate.canGoDown()  = this.y < matrix.height() && this.down().notMatchesAnySpecialChar() && this.down().isNotVisited()// "height"
 
     private fun Coordinate.isValid() = (x >= 0) && (x <= matrix.width()) && (y >= 0) && (y <= matrix.height())
 
@@ -90,9 +92,14 @@ data class Solver(var filename: String) {
         this[c.y][c.x] = value
     }
 
+    private fun ArrayList<CharArray>.isNotEnterOrExit(c: Coordinate) = this.getElement(c) != ENTERING_CHAR && this.getElement(c) != EXITING_CHAR
+
     private fun Coordinate.addToVisited() {
-        visitedCoordinates.add(this)
-        matrix.setElement(this, '*')
+        if (!visitedCoordinates.contains(this))
+            visitedCoordinates.add(this)
+
+        if(matrix.isNotEnterOrExit(this))
+            matrix.setElement(this, PATH_CHAR)
     }
     private fun Coordinate.removeFromVisited(){
         visitedCoordinates.remove(this)
@@ -111,7 +118,7 @@ data class Solver(var filename: String) {
 
         this.solve(entering_coord)
 
-        print("Visited Coordinates: $visitedCoordinates\n")
+        print("Path: $visitedCoordinates\n")
     }
 
     private fun solve(coordinate: Coordinate) {
@@ -123,22 +130,18 @@ data class Solver(var filename: String) {
 
         when {
             coordinate.canGoLeft() -> {
-                coordinate.goToTheLeft()
                 coordinate.addToVisited()
                 solve(coordinate.left())
             }
             coordinate.canGoRight() -> {
-                coordinate.goToTheRight()
                 coordinate.addToVisited()
                 solve(coordinate.right())
             }
             coordinate.canGoUp() -> {
-                coordinate.goUp()
                 coordinate.addToVisited()
                 solve(coordinate.up())
             }
             coordinate.canGoDown() -> {
-                coordinate.goDown()
                 coordinate.addToVisited()
                 solve(coordinate.down())
             }
@@ -146,6 +149,7 @@ data class Solver(var filename: String) {
                 // Can't go anywhere, got stuck!
                 // Remove from visited and go back!
                 coordinate.goBack()
+                solve(coordinate)
             }
         }
     }
