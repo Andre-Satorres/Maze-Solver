@@ -5,15 +5,15 @@ class Solver() {
     companion object{
         const val ENTERING_CHAR = 'I'
         const val EXITING_CHAR  = 'O'
-        const val WALL_CHAR = '#'
+        private const val WALL_CHAR = '#'
         const val PATH_CHAR = '*'
-        const val WRONG_PATH = '!'
+        private const val WRONG_PATH = '!'
         val SPECIAL_CHARS = arrayOf(WALL_CHAR, WRONG_PATH)
     }
 
     private var filename = ""
-    private var enteringCoord = Coordinate(0, 0)
-    private var exitCoord = Coordinate(0, 0)
+    private var enteringCoordinate = Coordinate(0, 0)
+    private var exitCoordinate = Coordinate(0, 0)
     private var matrix = ArrayList<CharArray>()
     private var visitedCoordinates = arrayListOf<Coordinate>()
 
@@ -125,10 +125,10 @@ class Solver() {
         if (!allLinesHaveTheSameWidth())
             throw Exception("Some line(s) have a different number of characters! Please be sure that all lines have the same quantity!")
 
-        this.enteringCoord = getEnteringCoordinate()!! // if there's no Entering or Exit, it will had thrown an exception
-        this.exitCoord = getExitCoordinate()!!
+        this.enteringCoordinate = getEnteringCoordinate()!! // if there's no Entering or Exit, it will had thrown an exception
+        this.exitCoordinate = getExitCoordinate()!!
 
-        this.solve(enteringCoord)
+        this.solve(enteringCoordinate)
 
         if (printMaze)
             printMaze()
