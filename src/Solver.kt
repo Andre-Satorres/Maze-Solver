@@ -1,8 +1,7 @@
 import java.io.File
 import java.lang.Exception
-import java.lang.StringBuilder
 
-data class Solver(var filename: String) {
+class Solver() {
     companion object{
         const val ENTERING_CHAR = 'I'
         const val EXITING_CHAR  = 'O'
@@ -12,20 +11,28 @@ data class Solver(var filename: String) {
         val SPECIAL_CHARS = arrayOf(WALL_CHAR, WRONG_PATH)
     }
 
-    private var entering_coord = Coordinate(0, 0)
-    private var exit_coord = Coordinate(0, 0)
+    private var filename = ""
+    private var enteringCoord = Coordinate(0, 0)
+    private var exitCoord = Coordinate(0, 0)
     private var matrix = ArrayList<CharArray>()
     private var visitedCoordinates = arrayListOf<Coordinate>()
+
+    constructor(filename: String):this(){
+        this.filename = filename
+        readMatrixFromFile()
+    }
 
     private fun readMatrixFromFile() {
         val file = File(filename)
         file.forEachLine { matrix.add(it.toCharArray()) }
     }
 
+    private fun allLinesHaveTheSameWidth() = matrix.all { it.lastIndex == matrix[0].lastIndex}
+
     private fun Char.isOnFirstRow(): Boolean = matrix[0].contains(this)
     private fun Char.isOnLastRow(): Boolean = matrix[matrix.lastIndex].contains(this)
-    private fun Char.isOnFirstLine(): Boolean = matrix.all { it[0] == this }
-    private fun Char.isOnLastLine(): Boolean = matrix.all { it[it.lastIndex] == this }
+    private fun Char.isOnFirstLine(): Boolean = matrix.any { it[0] == this }
+    private fun Char.isOnLastLine(): Boolean = matrix.any { it[it.lastIndex] == this }
 
     private fun Char.isInAValidEnteringPosition() = (this.isOnFirstLine() || this.isOnFirstRow() || this.isOnLastLine() || this.isOnLastRow())
     private fun Char.isInAValidExitPosition() = (this.isOnFirstLine() || this.isOnFirstRow() || this.isOnLastLine() || this.isOnLastRow())
@@ -107,18 +114,26 @@ data class Solver(var filename: String) {
     }
 
     private fun Coordinate.goBack(){
+        if(visitedCoordinates.isEmpty())
+            throw Exception("There's no way out in this maze! I couldn't solve it!")
+
         this.removeFromVisited()
-        this.setNewCoordenate(visitedCoordinates[visitedCoordinates.lastIndex])
+        this.setNewCoordinate(visitedCoordinates[visitedCoordinates.lastIndex])
     }
 
-    fun initAndSolve(){
-        this.readMatrixFromFile()
-        this.entering_coord = getEnteringCoordinate()!! // if there's no Entering or Exit, it will had thrown an exception
-        this.exit_coord = getExitCoordinate()!!
+    fun initAndSolve(printMaze: Boolean = true){
+        if (!allLinesHaveTheSameWidth())
+            throw Exception("Some line(s) have a different number of characters! Please be sure that all lines have the same quantity!")
 
-        this.solve(entering_coord)
+        this.enteringCoord = getEnteringCoordinate()!! // if there's no Entering or Exit, it will had thrown an exception
+        this.exitCoord = getExitCoordinate()!!
 
-        print("Path: $visitedCoordinates\n")
+        this.solve(enteringCoord)
+
+        if (printMaze)
+            printMaze()
+
+        println("\n${thePath()}")
     }
 
     private fun solve(coordinate: Coordinate) {
@@ -129,21 +144,21 @@ data class Solver(var filename: String) {
         }
 
         when {
-            coordinate.canGoLeft() -> {
+            coordinate.canGoDown() -> {
                 coordinate.addToVisited()
-                solve(coordinate.left())
+                solve(coordinate.down())
             }
             coordinate.canGoRight() -> {
                 coordinate.addToVisited()
                 solve(coordinate.right())
             }
+            coordinate.canGoLeft() -> {
+                coordinate.addToVisited()
+                solve(coordinate.left())
+            }
             coordinate.canGoUp() -> {
                 coordinate.addToVisited()
                 solve(coordinate.up())
-            }
-            coordinate.canGoDown() -> {
-                coordinate.addToVisited()
-                solve(coordinate.down())
             }
             else -> {
                 // Can't go anywhere, got stuck!
@@ -154,7 +169,20 @@ data class Solver(var filename: String) {
         }
     }
 
-    fun printMaze() {
-        matrix.forEach { println(it) }
+    private fun thePath(): String {
+        var ret = "Path: \n["
+
+        visitedCoordinates.forEachIndexed { index, element ->
+            ret += when {
+                index == visitedCoordinates.lastIndex -> "$element"
+                (index+1) % 4 == 0 -> "$element,\n"
+                else -> "$element, "
+            }
+        }
+
+        ret += "]"
+        return ret
     }
+
+    private fun printMaze() = matrix.forEach(::println)
 }
